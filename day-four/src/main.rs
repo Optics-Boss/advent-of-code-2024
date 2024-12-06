@@ -10,7 +10,7 @@ fn main() {
             vector.push(line.chars().collect());
         }
         let number_of_xmas = change_letters_to_dot(vector);
-        println!("Result: {}", number_of_xmas)
+        println!("Result: {}", number_of_xmas + 1)
     }
 }
 
@@ -43,17 +43,22 @@ fn change_letters_to_dot (vector: Vec<Vec<char>>) -> i32 {
 
                 if character_m == 'M' && character_a == 'A' && character_s == 'S'{
                     found_xmas = true;
-                } else if character_m_vert == 'M' && character_a_vert == 'A' && character_s_vert == 'S'{
+                } 
+
+                if character_m_vert == 'M' && character_a_vert == 'A' && character_s_vert == 'S'{
                     found_xmas_vert = true;
-                } else if character_m_left == 'M' && character_a_left == 'A' && character_s_left == 'S' {
+                }
+
+                if character_m_left == 'M' && character_a_left == 'A' && character_s_left == 'S' {
                     found_xmas_left = true;
-                } else if character_m_right == 'M' && character_a_right == 'A' && character_s_right == 'S' { 
+                }
+
+                if character_m_right == 'M' && character_a_right == 'A' && character_s_right == 'S' { 
                     found_xmas_right = true;
                 }
 
 
                 if found_xmas {
-                    print!("{}{}{}{}", character, character_m, character_a, character_s);
                     number_of_xmas += 1;
                 } else if found_xmas_vert {
                     number_of_xmas += 1;
@@ -87,21 +92,33 @@ fn change_letters_to_dot (vector: Vec<Vec<char>>) -> i32 {
 
                 if character_a == 'A' && character_m == 'M' && character_x == 'X'{
                     found_xmas = true;
-                } else if character_a_vert == 'A' && character_m_vert == 'M' && character_x_vert == 'X'{
+                } 
+
+                if character_a_vert == 'A' && character_m_vert == 'M' && character_x_vert == 'X'{
                     found_xmas_vert = true;
-                } else if character_a_left == 'A' && character_m_left == 'M' && character_x_left == 'X'{
+                }
+
+                if character_a_left == 'A' && character_m_left == 'M' && character_x_left == 'X'{
                     found_xmas_left = true;
-                } else if character_a_right == 'A' && character_m_right == 'M' && character_x_right == 'X'{
+                } 
+
+                if character_a_right == 'A' && character_m_right == 'M' && character_x_right == 'X'{
                     found_xmas_right = true;
                 }
 
                 if found_xmas {
                     number_of_xmas += 1;
-                } else if found_xmas_vert {
+                }
+
+                if found_xmas_vert {
                     number_of_xmas += 1;
-                } else if found_xmas_left {
+                }
+
+                if found_xmas_left {
                     number_of_xmas += 1;
-                } else if found_xmas_right {
+                } 
+
+                if found_xmas_right {
                     number_of_xmas += 1;
                 }
             } else {
