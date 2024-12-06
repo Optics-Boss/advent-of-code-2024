@@ -10,7 +10,7 @@ fn main() {
             vector.push(line.chars().collect());
         }
         let number_of_xmas = change_letters_to_dot(vector);
-        println!("Result: {}", number_of_xmas + 1)
+        println!("Result: {}", number_of_xmas)
     }
 }
 
@@ -60,11 +60,17 @@ fn change_letters_to_dot (vector: Vec<Vec<char>>) -> i32 {
 
                 if found_xmas {
                     number_of_xmas += 1;
-                } else if found_xmas_vert {
+                } 
+
+                if found_xmas_vert {
                     number_of_xmas += 1;
-                } else if found_xmas_left {
+                }
+                
+                if found_xmas_left {
                     number_of_xmas += 1;
-                } else if found_xmas_right {
+                }
+
+                if found_xmas_right {
                     number_of_xmas += 1;
                 }
 
