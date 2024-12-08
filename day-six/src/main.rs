@@ -2,12 +2,13 @@ use std::{io, usize};
 use std::fs::File;
 use std::io::BufRead;
 use std::path::Path;
+use std::collections::HashMap;
 
 fn main() {
     let mut result = 0;
-    if let Ok(lines) = read_lines("test.txt") {
+    if let Ok(lines) = read_lines("input.txt") {
         let mut vector : Vec<Vec<char>> = Vec::new();
-        let mut visited_gred_vec : Vec<VisitedGrid> = Vec::new();
+        let mut coordinates : HashMap<i32, Vec<i32>> = HashMap::new();
 
         for line in lines.flatten() {
             vector.push(line.chars().collect());
@@ -56,12 +57,14 @@ fn main() {
                             }
                         }
 
-                        let test: Vec<> = visited_gred_vec.into_iter().filter(|x| x.vertical_index == index_vertical && x.horizontal_index == index_horizontal);
+                        if !coordinates.entry(index_vertical as i32).or_default().contains(&(index_horizontal as i32)) {
+                            coordinates.entry(index_vertical as i32)
+                                .or_default()
+                                .push(index_horizontal as i32);
 
-                        // if visited_gred_vec.into_iter().filter(|x| x.vertical_index == index_vertical && x.horizontal_index == index_horizontal).collect(){
-                        //     visited_gred_vec.push(VisitedGrid {vertical_index: index_vertical, horizontal_index: index_horizontal});
-                        //     result += 1;
-                        // }
+                            result += 1;
+                        }
+
 
                     }
                 }
@@ -71,12 +74,6 @@ fn main() {
 
     println!("result = {:?}", result);
 }
-
-struct VisitedGrid {
-    vertical_index: i32,
-    horizontal_index: i32,
-}
-
 
 fn peek_above (index_vertical: i32, index_horizontal: i32,
                      position: i32, vector: Vec<Vec<char>>) -> char {
