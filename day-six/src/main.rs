@@ -6,7 +6,7 @@ use std::collections::HashMap;
 
 fn main() {
     let mut result = 0;
-    if let Ok(lines) = read_lines("input.txt") {
+    if let Ok(lines) = read_lines("test.txt") {
         let mut vector : Vec<Vec<char>> = Vec::new();
         let mut coordinates : HashMap<i32, Vec<i32>> = HashMap::new();
 
